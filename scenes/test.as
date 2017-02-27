@@ -9,7 +9,7 @@ void start() {
 
 [start]
 void shadow() {
-  entity food = add_entity("dungeon", "food");
+  entity food = add_entity("spoop/spoop_tilemap", "food");
   set_depth(food, 255);
   while(true) {
     set_position(food, get_position(get_player()) - vec(0, -.5));

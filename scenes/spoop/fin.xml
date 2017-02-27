@@ -1,0 +1,13 @@
+<scene name="Fin">
+    <map>
+        <texture>spoop_tilemap</texture>
+        <layer id="0">
+        </layer>
+    </map>
+    <collisionboxes>
+        <wall x="7" y="-9" w="1" h="23"/>
+        <wall x="-6" y="-10" w="13" h="1"/>
+        <wall x="-7" y="-9" w="1" h="23"/>
+        <wall x="-6" y="14" w="13" h="1"/>
+    </collisionboxes>
+</scene>
