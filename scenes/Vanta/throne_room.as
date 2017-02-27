@@ -123,15 +123,15 @@ void create_columns()
 pair create_darkness(vec pPosition, float pSeparation)
 {
 	pair darkness (add_entity("dark_light_up", "dark"), pSeparation);
-	darkness.set_position(pPosition);
-	darkness.set_depth(0);
+	darkness.set_pair_position(pPosition);
+	darkness.set_pair_depth(0);
 	return darkness;
 }
 
 pair create_torch_pair(vec pPosition, float pSeparation)
 {
 	pair torches (add_entity("torch", "torch"), pSeparation);
-	torches.set_position(pPosition);
+	torches. set_pair_position(pPosition);
 	return torches;
 }
 
@@ -148,28 +148,28 @@ void create_torches()
 	}
 	
 	pair throne_torches = create_torch_pair(vec(2.5, 3.5), 4);
-	entity throne_darks = create_darkness(vec(2.5, 3.5), 4);
+	pair throne_darks = create_darkness(vec(2.5, 3.5), 4);
 	
-	throne_torches.set_atlas("light");
-	throne_darks.set_atlas("flicker");
+	throne_torches.set_pair_atlas("light");
+	throne_darks.set_pair_atlas("flicker");
 	
-	throne_torches.start_animation();
-	thonre_darks.start_animation();
+	throne_torches.start_pair_animation();
+	throne_darks.start_pair_animation();
 	
 	set_depth_fixed(throne_torches.get_left(), false);
-	set_depth_fixed(throne_torche.get_right(), false);
+	set_depth_fixed(throne_torches.get_right(), false);
 }
 
 void light_torch(int k)
 {
 	player::lock(true);
-	torches[k].set_atlas("ignite");
+	torches[k].set_pair_atlas("ignite");
 	
-	darks[k].set_atlas("light");
+	darks[k].set_pair_atlas("light");
 	
-	torches[k].start_animation();
+	torches[k].start_pair_animation();
 	
-	darks[k].start_animation();
+	darks[k].start_pair_animation();
 	
 	wait(0.80);
 	
@@ -178,13 +178,13 @@ void light_torch(int k)
 
 void animate_torch(int k)
 {
-	torches[k].set_atlas("light");
+	torches[k].set_pair_atlas("light");
 	
-	darks[k].set_atlas("flicker");
+	darks[k].set_pair_atlas("flicker");
   
-	torches[k].start_animation();
+	torches[k].start_pair_animation();
 	
-	darks[k].start_animation();
+	darks[k].start_pair_animation();
 }
 
 [group step2]

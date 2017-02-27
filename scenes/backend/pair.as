@@ -12,16 +12,18 @@ class pair {
   }
   
   pair(const pair &in other) {
-    
+	
     this.right = other.get_right();
     this.left = other.get_left();
     
-    this.separation = other.get_sepration();
+    this.separation = other.get_separation();
     
-    this.angle = other.get_position();
+	this.angle = other.get_angle();
+    //this.angle = other.get_position();
+	
   }
   
-  pair(entity pRight, entity pLeft, float pSeparation, float pRadians = 0) {
+  pair(entity pRight, entity pLeft, float pSeparation, float pAngle, vec &in pPosition, float pRadians = 0) {
     
     right = pRight;
     left = pLeft;
@@ -30,24 +32,24 @@ class pair {
     
     angle = pAngle;
     
-    set_position
+    set_pair_position(pPosition);
   }
   
-  pair(entity pPair, float pSeparation, float pAngle = 0) {
+  pair(entity pPair, float pSeparation) {
     
     left = pPair;
     right = pPair;
     
     separation = pSeparation;
     
-    angle = pAngle;
+    angle = pSeparation;
   }
   
   void set_left(entity e) {
     left = e;
   }
   
-  entity get_left() {
+  entity get_left() const {
     
     return left;
     
@@ -59,7 +61,7 @@ class pair {
     
   }
   
-  entity get_right() {
+  entity get_right() const { 
     
     return right;
     
@@ -72,7 +74,7 @@ class pair {
     update_positions();
   }
   
-  float get_separation() {
+  float get_separation() const {
     
     return separation;
     
@@ -85,55 +87,59 @@ class pair {
     update_positions();
   }
   
-  float get_angle() {
+  float get_angle()  const {
     
     return angle;
     
   }
   
-  void set_position(vec pPos_left) {
+  void set_pair_position(vec pPos_left) {
     
     set_position(left, pPos_left);
     
     set_position(right, vec(pPos_left.x * cos(angle), pPos_left.y * sin(angle)));
   }
   
-  vec get_position() {
+  vec get_pair_position() {
     
-    return get_position(left));
+    return get_position(left);
     
   }
   
-  void set_atlas(string atlas) {
+  void set_pair_atlas(string atlas) {
     
     set_atlas(right, atlas);
     set_atlas(left, atlas);
   }
 
-  void start_antimaion() {
+  void start_pair_animation() {
     
     start_animation(right);
     start_animation(left);
   }
 
-  void set_depth(float depth) {
+  void set_pair_depth(float depth) {
     
     set_depth(right, depth);
     set_depth(left, depth);
   }
   
+  /*
   pair@ opAssign(const pair &in other) {
     
     this.right = other.get_right();
     this.left = other.get_left();
     
-    this.separation = other.get_sepration();
+    this.separation = other.get_separation();
     
-    this.angle = other.get_position();
+	this.angle = other.get_angle();
+	
+    //this.angle = other.get_pair_position();
+  }
+  */
+  private void update_positions() {
+    set_position(left, get_position(left));
   }
   
-  private void update_positions() {
-    set_position(this, left_position);
-  }
 }
 
